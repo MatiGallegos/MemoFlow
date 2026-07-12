@@ -39,3 +39,11 @@ MemoFlow será diseñado siguiendo la filosofía Mobile First.
 Las acciones de cada nota se mostrarán en columna para facilitar su uso en dispositivos móviles.
 
 Cada botón tendrá una zona táctil amplia para mejorar la experiencia del usuario.
+
+## Filosofía de la interfaz
+
+MemoFlow solo muestra información que aporta valor.
+
+Si un dato no existe, no se muestra ningún texto de reemplazo.
+
+La interfaz debe mantenerse limpia y enfocada en el contenido.
