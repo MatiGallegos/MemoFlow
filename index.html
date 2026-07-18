@@ -11,37 +11,78 @@
 
 <body>
 
-    <header>
-        <h1>MemoFlow    </h1>
+    <header class="encabezado-principal">
+        <h1>MemoFlow</h1>
         <p>Guardá una idea. Organizá tu día.</p>
     </header>
-
     
     <main>
         
-        <button class="boton-crear-nota">+ Crear Nota</button>
+        <button class="boton-crear-nota">
+            + Crear Nota
+        </button>
 
-        <section>
 
-            <article>
-                
-                <h2>Nota 1</h2>
+        <div class="contenido-principal">
 
-                <p>Esta es la primera nota. Aquí puedes escribir tus ideas y recordatorios.</p>
+            <section class="carpetas">
 
-                <p>
-                    <time datetime="2026-12-07">
-                        07/12/2026
-                    </time>               
-                </p>
+                <h2>Carpetas</h2>
 
-            </article>
+                <ul>
+                    <li>General</li>
+                </ul> 
+
+                <button class="boton-nueva-carpeta">
+                    + Nueva Carpeta
+                </button>        
+
+            </section>
+            
+            <section class="notas">
+
+                <article class="nota">
+                    
+                    <header class="encabezado-nota">
+
+                        <span class="flecha-nota">▼</span>
+                        <input type="text" 
+                        class="titulo-nota" 
+                        placeholder="Escribí un título">
+
+                        <button class="boton-opciones">⋮</button>
+
+                    </header>
+
+                    <div class="contenido-nota">
+
+                    <textarea class="texto-nota" placeholder="Escribí tu nota"></textarea>
+
+                    <footer class="pie-nota">                    
+                        
+                            <time datetime="2026-12-07">
+                                07/12/2026
+                            </time>               
+                        
+
+                    </footer>
+
+                    </div>
+
+                </article>
 
         </section>
 
+        </div>
+       
+
+        <button class="boton-papelera">
+            Papelera
+        </button>
+
     </main>
 
-</body>
+
   
 
     <script src="script.js"></script>
