@@ -3,80 +3,99 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+     <!-- Google Fonts -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="style.css">
     <title>MemoFlow</title>
 </head>
 
 <body>
 
-    <header class="encabezado-principal">
-        <h1>MemoFlow</h1>
-        <p>Guardá una idea. Organizá tu día.</p>
-    </header>
+    <h1>MemoFlow</h1>
     
-    <main>
-        
-        <button class="boton-crear-nota">
-            + Crear Nota
-        </button>
+    <main class="main-content">          
 
 
-        <div class="contenido-principal">
+        <div class="app">
 
-            <section class="carpetas">
+                <section class="sidebar">
 
-                <h2>Carpetas</h2>
+                    <h2>Carpetas</h2>
 
-                <ul>
-                    <li>General</li>
-                </ul> 
+                    <button class="new-folder-button">
+                        + Nueva Carpeta
+                    </button>
 
-                <button class="boton-nueva-carpeta">
-                    + Nueva Carpeta
-                </button>        
+                    <ul class="folder-list">
+                        <li class="folder">
+                            <button class="folder-button">
+                                <span class="folder-name">General</span>
+                                <span class="note-count">4</span>
+                            </button>
+                        </li>
+                    </ul> 
 
-            </section>
-            
-            <section class="notas">
+                            
 
-                <article class="nota">
-                    
-                    <header class="encabezado-nota">
+                </section>
+                
+                <section class="notes">
 
-                        <span class="flecha-nota">▼</span>
-                        <input type="text" 
-                        class="titulo-nota" 
-                        placeholder="Escribí un título">
+                    <!-- Buscador -->
 
-                        <button class="boton-opciones">⋮</button>
+                    <!-- Filtros -->
 
-                    </header>
+                    <!-- Contador -->
 
-                    <div class="contenido-nota">
+                    <button class="new-note-button">
+                        + Nueva Nota
+                    </button>
 
-                    <textarea class="texto-nota" placeholder="Escribí tu nota"></textarea>
+                    <div class="notes-list">
 
-                    <footer class="pie-nota">                    
+                    <article class="note">
                         
-                            <time datetime="2026-12-07">
-                                07/12/2026
-                            </time>               
-                        
+                        <header class="note-header">
 
-                    </footer>
+                            <span class="note-chevron">▼</span>
+                            <input type="text" 
+                            class="note-title" 
+                            placeholder="Escribí un título">
+
+                            <button class="note-options-button">⋮</button>
+
+                        </header>
+
+                        <div class="note-content">
+
+                            <textarea class="note-text" placeholder="Escribí tu nota"></textarea>
+
+                            <footer class="note-footer">                    
+                                
+                                    <time datetime="2026-12-07">
+                                        07/12/2026
+                                    </time>           
+                            
+                            </footer>
+
+                        </div>
+
+                    </article>
 
                     </div>
 
-                </article>
-
-        </section>
+                </section>
 
         </div>
        
 
-        <button class="boton-papelera">
+        <button class="delete-button">
             Papelera
         </button>
 

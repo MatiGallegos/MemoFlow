@@ -1,80 +1,142 @@
-*{
+/* ===========================
+   RESET
+=========================== */
+*,
+*::before,
+*::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+
 html {
     scroll-behavior: smooth;
 }
 
-header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+
+/* ===========================
+   VARIABLES
+=========================== */
+:root {
+
+    /* Fondo */
+    --color-fondo: #F5F5F5;
+
+    /* Tarjetas */
+    --color-superficie: #FFFFFF; 
+
+    /* Texto */
+    --color-texto: #1F2937;
+
+    /* Texto secundario */
+    --color-texto-secundario: #6B7280;
+
+    /* Bordes */
+    --color-borde: #E5E7EB;
+
+    /* Color principal */
+    --color-primario: #3B82F6;
+
+    /* Hover */
+    --color-primario-hover: #2563EB;
+
+    /* Éxito */
+    --color-exito: #22C55E;
+
+    /* Error */
+    --color-error: #EF4444;
+
+    /* Sombra */
+    --color-sombra: rgba(0, 0, 0, 0.08);
+
+    /* Fuente */
+    --fuente-principal: "Inter", sans-serif;
+
+    /* Escala de espaciado */
+   --espaciado-4: 4px;
+   --espaciado-8: 8px;
+   --espaciado-12: 12px;
+   --espaciado-16: 16px;
+   --espaciado-24: 24px;
+   --espaciado-32: 32px;
+   --espaciado-40: 40px;
+
+   /* Escala de ancho */
+   --ancho-280: 280px;
+   --ancho-360: 360px;
+
+
 }
 
-main {
-    display: flex;
-    flex-direction: column;
-    align-items: center; 
+
+/* ===========================
+   ESTILOS GENERALES
+=========================== */
+body {
+   background-color: var(--color-fondo);
+   color: var(--color-texto);
+   font-family: var(--fuente-principal);
 }
 
-hr {
-    margin: 20px 0;
+/* ===========================
+   LAYOUT
+=========================== */
+.app {
+   min-height: 100vh;
+   display: flex;
+   gap: var(--espaciado-24);
+     
+   
 }
 
-.boton-crear-nota {
-    margin-top: 20px;
-    border-radius: 8px;
-    border: none; 
-    font-size: 16px;
-    background-color: #a7b3f5;
-    padding: 10px 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
-    cursor: pointer;
-    color: white;
-    transition: background-color 0.3s ease;
+.sidebar {
+   width: var(--ancho-280);   
+   padding: var(--espaciado-24);
+   display: flex;
+   flex-direction: column;
+   gap: var(--espaciado-12);
+   border: 1px solid var(--color-borde);
+   box-shadow: 0 2px 8px var(--color-sombra);
+   border-radius: var(--espaciado-8);
+
 }
 
-.boton-crear-nota:hover {
-    background-color: #96a0db;
-    transform: scale(1.05);
+.notes {
+   flex: 1;
+   flex-wrap: wrap;
+   gap: var(--espaciado-12) ;
 }
 
-/* Estilos para la sección de notas */
-
-
-.nota {
-    width: 80%;
-    max-width: 500px;
-    margin: 20px auto;
-    padding: 10px 20px;
-    background-color: #c0bfbf;
-    border-radius: 8px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+.note {
+   background-color: var(--color-superficie);
+   min-width: var(--ancho-280);
+   max-width: var(--ancho-360);
+   padding: var(--espaciado-12);   
+   border: 1px solid var(--color-borde);
+   border-radius: var(--espaciado-8);
+   transition: 0.1s;  
+}
+.note:hover {
+   transform: scale(1.02);
+   box-shadow: 0 2px 8px var(--color-sombra);
 }
 
-
-.encabezado-nota{
-    display: flex;
-    flex-direction: row;    
-}
+/* ===========================
+   BOTONES
+=========================== */
 
 
-.nota-contenido {
-    display: none;    
-}
+/* ===========================
+   CARPETAS
+=========================== */
 
-/*clase para cuando se abran las notas*/
-.nota-contenido.abierta {
-    display: block;
-}
 
-.nota-texto {
-    width: 250px;
-    max-width: 550px;
-}
+/* ===========================
+   NOTAS
+=========================== */
+
+
+/* ===========================
+   RESPONSIVE
+=========================== */
