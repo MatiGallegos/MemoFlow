@@ -17,20 +17,23 @@
 
 <body>
 
-    <h1>MemoFlow</h1>
     
-    <main class="main-content">          
+    
+    <div class="overlay"></div>
 
+    <main class="main-content">          
+        <h1>MemoFlow</h1>
 
         <div class="app">
 
                 <section class="sidebar">
 
                     <h2>Carpetas</h2>
-
-                    <button class="new-folder-button">
-                        + Nueva Carpeta
-                    </button>
+                    
+                        <button class="button button-secondary">
+                            <i class="button-icon" data-lucide="folder-plus"></i>
+                            Nueva Carpeta
+                        </button>
 
                     <ul class="folder-list">
                         <li class="folder">
@@ -47,46 +50,71 @@
                 
                 <section class="notes">
 
-                    <!-- Buscador -->
+                    <header class="notes-header">
+                    
+                        <div class="notes-header-top">
+                            
+                            <button class="button menu-button" aria-label="Abrir menú de carpetas"> 
+                                <i class="button-icon" data-lucide="menu"></i>
+                            </button>
+                            
+                            <div class="search-section">                    
+                                <label class="search-box">
+                                    <i class="button-icon" data-lucide="search"></i>
 
-                    <!-- Filtros -->
+                                    <input class="search-input"
+                                    type="search"
+                                    placeholder="Buscar notas..."
+                                    aria-label="Buscar notas">
+                                </label> 
 
-                    <!-- Contador -->
+                                <span class="notes-counter">15 notas</span>
+                            </div>
+                        
 
-                    <button class="new-note-button">
-                        + Nueva Nota
-                    </button>
+                            <button class="button button-primary"><i class="button-icon" data-lucide="sticky-note-plus"></i>
+                                    Nueva Nota
+                                </button>
+                            
+                        </div>   
+
+                            
+
+                    </header>
+
+                    
 
                     <div class="notes-list">
 
-                    <article class="note">
-                        
-                        <header class="note-header">
-
-                            <span class="note-chevron">▼</span>
-                            <input type="text" 
-                            class="note-title" 
-                            placeholder="Escribí un título">
-
-                            <button class="note-options-button">⋮</button>
-
-                        </header>
-
-                        <div class="note-content">
-
-                            <textarea class="note-text" placeholder="Escribí tu nota"></textarea>
-
-                            <footer class="note-footer">                    
-                                
-                                    <time datetime="2026-12-07">
-                                        07/12/2026
-                                    </time>           
+                        <article class="note">
                             
-                            </footer>
+                            <header class="note-header">                              
+                                                                
+                                <i class="button-icon" data-lucide="chevronDown"></i>
+                                <input type="text" 
+                                class="note-title"
+                                placeholder="Escribí un título">
 
-                        </div>
+                                <button class="note-options-button"><i class="button-icon" data-lucide="ellipsis-vertical"></i>
+                                </button>
 
-                    </article>
+                            </header>
+
+                            <div class="note-content">
+
+                                <textarea class="note-text" placeholder="Escribí tu nota"></textarea>
+
+                                <footer class="note-footer">                    
+                                    
+                                        <time datetime="2026-12-07">
+                                            07/12/2026
+                                        </time>           
+                                
+                                </footer>
+
+                            </div>
+
+                        </article>
 
                     </div>
 
@@ -103,6 +131,11 @@
 
 
   
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        lucide.createIcons();
+    </script>
 
     <script src="script.js"></script>
 </body>
