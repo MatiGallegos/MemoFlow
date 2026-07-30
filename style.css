@@ -24,7 +24,13 @@ html {
     --color-fondo: #F5F5F5;
 
     /* Tarjetas */
-    --color-superficie: #FFFFFF; 
+    --color-superficie: #FFFFFF;
+
+    /* color superficie Hover */
+    --color-superficie-hover: #EEF2F7; 
+
+    /* Color superficie focus */
+    --color-superficie-focus:#f5f7ff;
 
     /* Texto */
     --color-texto: #1F2937;
@@ -38,17 +44,21 @@ html {
     /* Color principal */
     --color-primario: #3B82F6;
 
-    /* Color del focus */
-    --color-superficie-focus:#f5f7ff;
-
     /* Hover */
     --color-primario-hover: #2563EB;
+
+     /* texto-Hover */
+    --color-texto-hover: #F5F5F5;
+
 
     /* Éxito */
     --color-exito: #22C55E;
 
     /* Error */
     --color-error: #EF4444;
+
+    /* Color transparente*/
+    --color-fondo-transparente: transparent;
 
     /* Sombra */
     --color-sombra: rgba(0, 0, 0, 0.08);
@@ -76,9 +86,14 @@ html {
    --radius-xl: 16px;  /* Extra Large */
 
    /* Escala de ancho */
+   --ancho-140: 140px;
    --ancho-280: 280px;
    --ancho-360: 360px;
 
+   /* Escala de largo */
+   --largo-140: 140px;
+   --largo-280: 280px;
+   --largo-360: 360px;
 
    /* Escala de transition */
    --transition-fast: 0.2s ease;
@@ -92,12 +107,21 @@ body {
    background-color: var(--color-fondo);
    color: var(--color-texto);
    font-family: var(--fuente-principal);
+   
 
 }
 
 /* ===========================
    LAYOUT
 =========================== */
+h1 {
+   font-size: var(--espaciado-24);
+   padding: var(--espaciado-8);
+}
+h2 {
+   font-size: var(--espaciado-16);
+   }
+
 .app {
    min-height: 100vh;
    display: flex;
@@ -112,17 +136,16 @@ body {
    margin-top: var(--espaciado-12);
    background-color: var(--color-superficie);
    border: 1px solid var(--color-borde);
-   border-radius: var(--radius-md);
-   transition: 0.2s;     
-
-}
-
-.note:hover {
-   transform: scale(1.02);
    box-shadow: 0 2px 8px var(--color-sombra);
+   border-radius: var(--radius-md);
+   transition: 0.2s;   
 
 }
 
+
+/* ===========================
+   NOTAS
+=========================== */
 
 .notes {
    display: flex;
@@ -143,21 +166,75 @@ body {
    display: flex;
    flex-direction: column;
    gap: var(--espaciado-8);
+   
 }
 
 .notes-header-top {
    display: flex;
    align-items: flex-start;
    gap: var(--espaciado-12);
+
 }
 
 .search-section {
    display: flex;
    flex-direction: column;
+
+}
+/* NOTE */
+
+
+.note-header {
+   display: flex;
+   justify-content: center;
+   align-items: center; 
+   gap: var(--espaciado-8);  
+}
+
+.note-title {
+   font-family: var(--fuente-principal);
+   border-style: none;
+   
+     
 }
 
 
+.note-options-button {
+   padding: var(--espaciado-4);
 
+   background-color: var(--color-fondo-transparente);
+   color: var(--color-texto-secundario);
+
+   border-style: none;   
+   border-radius: var(--radius-md);
+   
+   transition: 0.2S;
+   
+   
+}
+.note-options-button:hover {
+   cursor: pointer;
+   background-color: var(--color-primario);
+   color: white;
+   
+}
+.note-text {
+   
+   margin-left: var(--espaciado-24);
+   padding: var(--espaciado-8);
+
+   font-weight: 400;
+   font-family: var(--fuente-principal);
+
+   border-style: none;  
+   resize: none;
+}
+
+.note-footer {
+   font-size: 12px;
+   color: var(--color-texto-secundario);
+   
+}
 
 /* ===========================
    SIDEBAR
@@ -177,7 +254,73 @@ body {
    transform: translateX(0);
    z-index: 30;
 
-}/* ===========================
+}
+
+
+/* ===========================
+   CARPETAS
+=========================== */
+
+.folder-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: var(--espaciado-8);
+}
+
+.folder-button {   
+   width: 100%;
+   padding: var(--espaciado-8);
+   
+   background-color: var(--color-fondo-transparente);   
+
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   
+   border: 1px solid var(--color-borde);
+   border-radius: var(--radius-md); 
+   cursor: pointer;
+   
+   transition: border-color var(--transition-fast),
+               background-color var(--transition-fast),
+               color var(--transition-fast);
+   
+
+}
+/*folder-button hover */
+.folder-button:hover {     
+   background-color: var(--color-superficie-hover);
+   border-color: var(--color-primario-hover);   
+   
+}
+/*folder-button active */
+.folder-button.active {
+   background-color: var(--color-primario);
+   border-color: var(--color-primario);
+   color: var(--color-texto-hover);
+}
+               
+.folder-button:focus-visible {
+   outline: 2px solid var(--color-primario);
+   outline-offset: 2px;
+}
+
+
+.folder-info {
+   display: flex;
+   align-items: center;
+   gap: var(--espaciado-6);
+         
+}
+
+.folder-icon {
+   width: var(--espaciado-18);
+   height: var(--espaciado-18);
+}
+
+
+/* ===========================
    OVERLAY
 =========================== */
 .overlay {
@@ -219,6 +362,13 @@ body {
     outline: none;
     flex: 1;
     background-color: transparent;
+}
+
+.notes-counter {
+   padding-top: var(--espaciado-6);
+   font-size: 12px;
+   color: var(--color-texto-secundario);
+   
 }
 
 
@@ -286,21 +436,6 @@ body {
    width: var(--espaciado-18);
    height: var(--espaciado-18);
 }
-
-
-
-
-
-
-
-/* ===========================
-   CARPETAS
-=========================== */
-
-
-/* ===========================
-   NOTAS
-=========================== */
 
 
 /* ===========================
