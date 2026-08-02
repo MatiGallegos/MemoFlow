@@ -181,6 +181,7 @@ h2 {
    padding: var(--espaciado-8);
    
    background-color: var(--color-fondo-transparente);   
+   
 
    display: flex;
    justify-content: space-between;
