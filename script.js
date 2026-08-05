@@ -9,24 +9,31 @@ function createNote() {
     const note = document.createElement('article');
     const newHeader = document.createElement('header');
     const titleInput = document.createElement('input');
-    const ChevronIcon = document.createElement('i');
+    const chevronIcon = document.createElement('i');
+    const menuButton = document.createElement('button');
+    const menuIcon = document.createElement('i');
     
-
     
     note.classList.add('note');
 
     newHeader.classList.add('note-header');
 
-    ChevronIcon.classList.add('button-icon');
-    ChevronIcon.setAttribute("data-lucide", "chevron-down");
+    chevronIcon.classList.add('button-icon');
+    chevronIcon.setAttribute("data-lucide", "chevron-down");
 
     titleInput.classList.add('note-title');    
     titleInput.setAttribute("type", "text");
-    titleInput.setAttribute("placeholder", "Título");
+    titleInput.setAttribute("placeholder", "Título");    
     
+    menuIcon.classList.add('button-icon');
+    menuIcon.setAttribute("data-lucide", "ellipsis-vertical");
+    menuButton.classList.add('note-options-button');
 
-    newHeader.append(ChevronIcon);
+    menuButton.append(menuIcon);
+
+    newHeader.append(chevronIcon);
     newHeader.append(titleInput);
+    newHeader.append(menuButton);
     
     note.append(newHeader);    
 
