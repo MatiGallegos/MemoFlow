@@ -1,47 +1,67 @@
 const newNoteButton = document.querySelector('.js-new-note-button');
 const notesList = document.querySelector('.js-notes-list');
 
-
-
 newNoteButton.addEventListener('click', createNote);
 
-function createNote() {
-    const note = document.createElement('article');
+
+function createHeader() {
     const newHeader = document.createElement('header');
-    const titleInput = document.createElement('input');
     const chevronIcon = document.createElement('i');
+    const titleInput = document.createElement('input');    
     const menuButton = document.createElement('button');
     const menuIcon = document.createElement('i');
-    
-    
-    note.classList.add('note');
 
     newHeader.classList.add('note-header');
-
+    
     chevronIcon.classList.add('button-icon');
     chevronIcon.setAttribute("data-lucide", "chevron-down");
 
     titleInput.classList.add('note-title');    
     titleInput.setAttribute("type", "text");
     titleInput.setAttribute("placeholder", "Título");    
-    
-    menuIcon.classList.add('button-icon');
-    menuIcon.setAttribute("data-lucide", "ellipsis-vertical");
+
     menuButton.classList.add('note-options-button');
 
-    menuButton.append(menuIcon);
-
+    menuIcon.classList.add('button-icon');
+    menuIcon.setAttribute("data-lucide", "ellipsis-vertical");
+    
     newHeader.append(chevronIcon);
     newHeader.append(titleInput);
     newHeader.append(menuButton);
+    menuButton.append(menuIcon);
+
+    return newHeader;
+}
+
+function createNoteContent() {    
+    const noteContent = document.createElement('div');
+    const noteTextArea = document.createElement('textarea');    
+
+       
+    noteContent.classList.add('note-content');
+    noteTextArea.classList.add('note-text');    
+    noteTextArea.setAttribute("placeholder", "Añade una nota...");
     
-    note.append(newHeader);    
+    noteContent.append(noteTextArea);        
+
+    return noteContent;
+}
+
+function createNote() {
+    const header = createHeader();
+    const noteContent = createNoteContent();
+    const note = document.createElement('article');
+
+    note.classList.add('note'); 
+
+    note.append(header);    
+    note.append(noteContent);
 
     notesList.append(note);
-
+    
     lucide.createIcons();
+};
 
-} 
 
 
 
