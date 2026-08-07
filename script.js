@@ -10,6 +10,7 @@ function createHeader() {
     const titleInput = document.createElement('input');    
     const menuButton = document.createElement('button');
     const menuIcon = document.createElement('i');
+    
 
     newHeader.classList.add('note-header');
     
@@ -31,36 +32,81 @@ function createHeader() {
     menuButton.append(menuIcon);
 
     return newHeader;
-}
+}    
 
 function createNoteContent() {    
     const noteContent = document.createElement('div');
-    const noteTextArea = document.createElement('textarea');    
+    const noteTextArea = document.createElement('textarea');  
+    const footer = createNoteFooter();  
 
        
     noteContent.classList.add('note-content');
     noteTextArea.classList.add('note-text');    
     noteTextArea.setAttribute("placeholder", "Añade una nota...");
     
-    noteContent.append(noteTextArea);        
+    noteContent.append(noteTextArea);
 
+    noteContent.append(footer);
     return noteContent;
+}
+
+
+
+
+function createNoteFooter() {
+    const noteFooter = document.createElement('footer');
+    const noteDate = document.createElement('time');
+    const currentDate = new Date();
+    const day = currentDate.getDate().toString().padStart(2, '0');
+    const month = (currentDate.getMonth() + 1).toString().padStart(2, '0');
+    const year = currentDate.getFullYear();
+
+    noteFooter.classList.add('note-footer');
+    
+    noteDate.setAttribute("datetime", `${year}-${month}-${day}`);
+    noteDate.textContent = `${day}/${month}/${year}`;
+
+    noteFooter.append(noteDate);     
+    
+    return noteFooter;
+
 }
 
 function createNote() {
     const header = createHeader();
-    const noteContent = createNoteContent();
+    const noteContent = createNoteContent();  
     const note = document.createElement('article');
-
+    
+    const noteTextarea = noteContent.querySelector('.note-text');// Obtener el textarea de contenido de la nota
     note.classList.add('note'); 
 
     note.append(header);    
     note.append(noteContent);
-
+    
     notesList.append(note);
+
+
+    noteTextarea.focus(); // Establecer el foco en el textarea de contenido de la nota
     
     lucide.createIcons();
+
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
