@@ -1,21 +1,34 @@
 const newNoteButton = document.querySelector('.js-new-note-button');
 const notesList = document.querySelector('.js-notes-list');
 
+notesList.addEventListener('click', function(event) {
+    const chevronButton = event.target.closest('.note-chevron-button');
+        if (chevronButton) {
+            const currentNote = chevronButton.closest('.note');
+            currentNote.classList.toggle('is-collapsed');
+        }
+});
+
+
 newNoteButton.addEventListener('click', createNote);
 
 
 function createHeader() {
     const newHeader = document.createElement('header');
     const chevronIcon = document.createElement('i');
+    const chevronButton = document.createElement('button');
     const titleInput = document.createElement('input');    
     const menuButton = document.createElement('button');
     const menuIcon = document.createElement('i');
-    
 
-    newHeader.classList.add('note-header');
+    
+    newHeader.classList.add('note-header'); 
     
     chevronIcon.classList.add('button-icon');
+    chevronIcon.classList.add('chevron-icon');
     chevronIcon.setAttribute("data-lucide", "chevron-down");
+
+    chevronButton.classList.add('note-chevron-button');
 
     titleInput.classList.add('note-title');    
     titleInput.setAttribute("type", "text");
@@ -26,7 +39,9 @@ function createHeader() {
     menuIcon.classList.add('button-icon');
     menuIcon.setAttribute("data-lucide", "ellipsis-vertical");
     
-    newHeader.append(chevronIcon);
+    newHeader.append(chevronButton);
+    chevronButton.append(chevronIcon);
+
     newHeader.append(titleInput);
     newHeader.append(menuButton);
     menuButton.append(menuIcon);
@@ -51,8 +66,6 @@ function createNoteContent() {
 }
 
 
-
-
 function createNoteFooter() {
     const noteFooter = document.createElement('footer');
     const noteDate = document.createElement('time');
@@ -74,21 +87,28 @@ function createNoteFooter() {
 
 function createNote() {
     const header = createHeader();
+
+
     const noteContent = createNoteContent();  
     const note = document.createElement('article');
     
     const noteTextarea = noteContent.querySelector('.note-text');// Obtener el textarea de contenido de la nota
-    note.classList.add('note'); 
 
-    note.append(header);    
-    note.append(noteContent);
+     
+    note.classList.add('note'); // Agregar la clase "note" al elemento <article>
+
+    note.append(header);    // Agregar el encabezado al elemento <article>
+    note.append(noteContent); // Agregar el contenido de la nota al elemento <article>
     
+    
+
     notesList.append(note);
-
-
-    noteTextarea.focus(); // Establecer el foco en el textarea de contenido de la nota
     
+    noteTextarea.focus(); // Establecer el foco en el textarea de contenido de la nota
+
     lucide.createIcons();
+
+    
 
 };
 
@@ -100,14 +120,24 @@ function createNote() {
 
 
 
+/*
+const chevronButton = header.querySelector('.note-chevron-button');
+    
+
+    chevronButton.addEventListener('click', function() {
+
+        console.log('Chevron button clicked');
+        
+        const currentNote = chevronButton.closest('.note');
+
+        currentNote.classList.toggle('is-collapsed');
+});
 
 
 
 
 
-
-
-
+*/
 
 
 
