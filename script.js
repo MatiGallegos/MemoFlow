@@ -3,6 +3,7 @@ const notesList = document.querySelector('.js-notes-list');
 
 notesList.addEventListener('click', function(event) {
     const chevronButton = event.target.closest('.note-chevron-button');
+
         if (chevronButton) {
             const currentNote = chevronButton.closest('.note');
             currentNote.classList.toggle('is-collapsed');
@@ -52,16 +53,21 @@ function createHeader() {
 function createNoteContent() {    
     const noteContent = document.createElement('div');
     const noteTextArea = document.createElement('textarea');  
+    const noteContentInner = document.createElement('div');
     const footer = createNoteFooter();  
-
        
     noteContent.classList.add('note-content');
+
     noteTextArea.classList.add('note-text');    
     noteTextArea.setAttribute("placeholder", "Añade una nota...");
-    
-    noteContent.append(noteTextArea);
 
-    noteContent.append(footer);
+    noteContentInner.classList.add('note-content-inner');
+
+    noteContentInner.append(noteTextArea);
+    noteContentInner.append(footer);
+
+    noteContent.append(noteContentInner);
+
     return noteContent;
 }
 

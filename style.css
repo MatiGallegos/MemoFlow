@@ -100,6 +100,8 @@ html {
 
    /* Escala de transition */
    --transition-fast: 0.2s ease;
+   --transition-medium: 0.4s ease;
+
 }
 
 
@@ -254,6 +256,11 @@ h2 {
 
 }
 
+@media (max-width: 768px) {
+    .note {
+        width: 100%;
+    }
+}
 
 /* ===========================
    NOTES
@@ -273,6 +280,7 @@ h2 {
    display: flex;
    flex-wrap:wrap;
    gap: var(--espaciado-12);
+   align-items: flex-start;
    
 }
 
@@ -350,12 +358,31 @@ h2 {
    gap: var(--espaciado-8);  
 }
 
+
+
 .note-content {
    margin-left: var(--espaciado-18);
-   display: flex;
-   flex-direction: column;
-   gap: var(--espaciado-12);
+
+   display: grid;
+   grid-template-rows: 1fr;
+
+   transition: grid-template-rows 0.2s ease;
+   
 }
+
+.note-content-inner {
+    min-height: 0;    
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+    gap: var(--espaciado-12);
+}
+
+.note.is-collapsed .note-content {   
+    grid-template-rows: 0fr;
+}
+
 
 .note-title {
    flex: 1;
@@ -535,6 +562,8 @@ h2 {
    
 }
 
+
+
 /*menu-button */
 .menu-button {
    background-color: transparent;
@@ -560,6 +589,24 @@ h2 {
    height: var(--espaciado-18);
 }
 
+
+.note-chevron-button {
+   background-color: transparent;
+   border: none;
+   padding: var(--espaciado-4);
+   cursor: pointer;
+   border-radius: var(--radius-md);
+
+}
+
+/*chevron icon */
+.chevron-icon {
+    transition: transform var(--transition-fast);
+}
+/*Chevron-button rotate*/
+.note.is-collapsed .chevron-icon {
+   transform: rotate(-90deg);
+}
 
 /* ===========================
    RESPONSIVE
