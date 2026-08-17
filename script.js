@@ -1,6 +1,7 @@
 const newNoteButton = document.querySelector('.js-new-note-button');
 const notesList = document.querySelector('.js-notes-list');
 
+
 notesList.addEventListener('click', function(event) {
     const chevronButton = event.target.closest('.note-chevron-button');
 
@@ -8,11 +9,43 @@ notesList.addEventListener('click', function(event) {
             const currentNote = chevronButton.closest('.note');
             currentNote.classList.toggle('is-collapsed');
         }
+
+    const menuOptionsButton = event.target.closest('.note-options-button');
+
+        if(menuOptionsButton) {
+            
+            const currentNote = menuOptionsButton.closest('.note');
+
+            const existingMenu = currentNote.querySelector('.note-options-menu');
+
+                if (!existingMenu) {
+
+                    const optionsMenu = createOptionsMenu();
+                    currentNote.append(optionsMenu);
+                } else {
+                    existingMenu.remove();
+                }
+                
+
+        }    
+        
+    const deleteButton = event.target.closest('.note-delete-button');
+
+        if(deleteButton) {
+            
+            const deleteModal = createDeleteModal();
+            const overlay = document.querySelector('.overlay');
+
+
+            document.body.append(deleteModal);
+            overlay.classList.add('is-visible');
+
+              
+
+        }
 });
 
-
 newNoteButton.addEventListener('click', createNote);
-
 
 function createHeader() {
     const newHeader = document.createElement('header');
@@ -45,10 +78,64 @@ function createHeader() {
 
     newHeader.append(titleInput);
     newHeader.append(menuButton);
+
     menuButton.append(menuIcon);
 
     return newHeader;
 }    
+
+
+function createOptionsMenu () {
+    const optionsMenu = document.createElement('div');
+    const deleteButton = document.createElement('button');
+
+    optionsMenu.classList.add('note-options-menu');
+    deleteButton.classList.add('note-delete-button');
+
+    deleteButton.textContent = `Eliminar nota`;
+
+    optionsMenu.append(deleteButton);
+
+
+    return optionsMenu;
+
+}
+
+function createDeleteModal() {
+     // 1. Crear elementos
+    const deleteModal = document.createElement('div');   
+    const deleteMessage = document.createElement('p');
+    const buttonsContainer = document.createElement('div');
+    const cancelButton = document.createElement('button'); 
+    const confirmButton = document.createElement('button'); 
+
+    // 2. Agregar clases
+    deleteModal.classList.add('delete-modal');
+    buttonsContainer.classList.add('buttons-container');
+    cancelButton.classList.add('modal-cancel-button');
+    confirmButton.classList.add('modal-confirm-button');
+
+    // 3. Agregar contenido
+    deleteMessage.textContent = `¿Estás seguro de que quieres eliminar la nota?`;    
+    cancelButton.textContent = `No eliminar`;
+    confirmButton.textContent = `Eliminar`;
+
+
+    // 4. Armar estructura
+    buttonsContainer.append(cancelButton);
+    buttonsContainer.append(confirmButton);
+
+    deleteModal.append(deleteMessage);
+    deleteModal.append(buttonsContainer);
+    
+    // 5. Devolver resultado
+    return deleteModal;
+}
+
+
+
+
+
 
 function createNoteContent() {    
     const noteContent = document.createElement('div');

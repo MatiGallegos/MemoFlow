@@ -235,9 +235,22 @@ h2 {
    OVERLAY
 =========================== */
 .overlay {
-    z-index: 20;
+   position: fixed;
+   inset: 0;
+   opacity: 0;
+
+   background-color: rgba(0, 0, 0, 0.4);
+
+   pointer-events: none;
+
+   transition: opacity var(--transition-fast);
+   z-index: 9998;
 }
 
+.overlay.is-visible {
+   opacity: 1;
+   pointer-events: auto;
+}
 /* ===========================
    NOTE
 =========================== */
@@ -335,6 +348,7 @@ h2 {
 
 .note {
    width: var(--ancho-340);
+   position: relative;
 
    transition: transform var(--transition-fast), 
                box-shadow var(--transition-fast);
@@ -446,6 +460,90 @@ h2 {
 .note.is-collapsed .note-content {
     display: none;
 }
+
+
+.note-options-menu{
+   padding: var(--espaciado-4);
+
+   position: absolute;
+   top: 45px;
+   right: 12px;
+
+   background-color: var(--color-fondo);
+
+   border: 1px solid #ddd;
+   border-radius: 8px;
+
+   box-shadow: 0 4px 12px var(--color-sombra);
+   
+}
+
+.note-delete-button {
+    background-color: transparent;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+
+    border-radius: var(--radius-md);
+    transition: background-color var(--transition-fast),
+                color var(--transition-fast);
+
+}
+
+.note-delete-button:hover {
+    background-color: var(--color-superficie-hover);
+    color: var(--color-error);
+}
+
+.delete-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    background-color: var(--color-fondo);
+    padding: var(--espaciado-12);
+
+    border-radius: var(--radius-md);
+    box-shadow: 0 4px 12px var(--color-sombra);
+
+    z-index: 9999;
+}
+
+.buttons-container {
+   display: flex;
+   gap: var(--espaciado-12);  
+}
+
+.modal-cancel-button,
+.modal-confirm-button {
+   border: 2px solid var(--color-borde);
+
+   margin-top: var(--espaciado-12);
+   padding: 8px 12px;
+   cursor: pointer;
+
+   border-radius: var(--radius-md);
+   
+   transition: var(--transition-fast);
+    
+}
+
+.modal-cancel-button:hover,
+.modal-confirm-button:hover {   
+   transform: translateY(-2px);
+   box-shadow: 0 4px 12px var(--color-sombra);
+
+}
+
+.modal-confirm-button {
+   background-color: var(--color-error);
+
+   color: white;
+}
+
+x
+
 
 
 /* ===========================
