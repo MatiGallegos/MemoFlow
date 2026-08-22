@@ -26,24 +26,39 @@ notesList.addEventListener('click', function(event) {
                     existingMenu.remove();
                 }
                 
-
         }    
         
     const deleteButton = event.target.closest('.note-delete-button');
 
         if(deleteButton) {
+            const currentNote = deleteButton.closest('.note');
+            const overlay = document.querySelector('.overlay');  
+            const deleteModal = createDeleteModal(currentNote);
             
-            const deleteModal = createDeleteModal();
-            const overlay = document.querySelector('.overlay');
-
-
             document.body.append(deleteModal);
-            overlay.classList.add('is-visible');
-
-              
-
+            overlay.classList.add('is-visible');              
         }
+
 });
+
+  
+    
+document.addEventListener('click',function(event){
+
+    const cancelModalButton = event.target.closest('.modal-cancel-button');
+
+        if(cancelModalButton) {
+            const deleteModal = cancelModalButton.closest('.delete-modal');
+            const deleteOverlay = document.querySelector('.overlay');
+
+            deleteOverlay.classList.remove('is-visible');
+            
+            deleteModal.remove();
+        }
+
+    });   
+
+   
 
 newNoteButton.addEventListener('click', createNote);
 
@@ -101,36 +116,47 @@ function createOptionsMenu () {
 
 }
 
-function createDeleteModal() {
-     // 1. Crear elementos
+function createDeleteModal(noteToDelete) {
+    
+   
     const deleteModal = document.createElement('div');   
     const deleteMessage = document.createElement('p');
     const buttonsContainer = document.createElement('div');
     const cancelButton = document.createElement('button'); 
     const confirmButton = document.createElement('button'); 
 
-    // 2. Agregar clases
+
     deleteModal.classList.add('delete-modal');
     buttonsContainer.classList.add('buttons-container');
     cancelButton.classList.add('modal-cancel-button');
     confirmButton.classList.add('modal-confirm-button');
 
-    // 3. Agregar contenido
     deleteMessage.textContent = `¿Estás seguro de que quieres eliminar la nota?`;    
     cancelButton.textContent = `No eliminar`;
     confirmButton.textContent = `Eliminar`;
 
 
-    // 4. Armar estructura
     buttonsContainer.append(cancelButton);
     buttonsContainer.append(confirmButton);
 
     deleteModal.append(deleteMessage);
     deleteModal.append(buttonsContainer);
     
-    // 5. Devolver resultado
+     confirmButton.addEventListener('click', function() {
+
+        const overlay = document.querySelector('.overlay');
+
+        noteToDelete.remove();
+        overlay.classList.remove('is-visible');
+        deleteModal.remove();
+
+
+});
+
+
     return deleteModal;
 }
+
 
 
 
@@ -213,50 +239,6 @@ function createNote() {
 
 
 
-/*
-const chevronButton = header.querySelector('.note-chevron-button');
-    
-
-    chevronButton.addEventListener('click', function() {
-
-        console.log('Chevron button clicked');
-        
-        const currentNote = chevronButton.closest('.note');
-
-        currentNote.classList.toggle('is-collapsed');
-});
 
 
 
-
-
-*/
-
-
-
-
-
-/*Esta función crea una nueva carpeta en la lista de carpetas. 
-Se crea un elemento <li> y un <button> dentro de él, 
-y se agregan las clases correspondientes para el estilo. 
-Luego, se agrega la carpeta a la lista de carpetas en el DOM.
-
-const newFolderButton = document.querySelector('.js-new-folder-button');
-const folderList = document.querySelector('.js-folder-list');
-
-newFolderButton.addEventListener ('click', createFolder);
-
-function createFolder() {
-    const folder = document.createElement('li');
-    const folderButton = document.createElement('button');
-
-    folder.classList.add('folder');
-    folderButton.classList.add('folder-button');
-
-    folder.append(folderButton);
-    folderList.append(folder);
-    folder.append(folderButton);
-    
-}
-
-*/
