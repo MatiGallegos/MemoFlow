@@ -147,6 +147,7 @@ function createDeleteModal(noteToDelete) {
         const overlay = document.querySelector('.overlay');
 
         noteToDelete.remove();
+        updateNotesCounter();
         overlay.classList.remove('is-visible');
         deleteModal.remove();
 
@@ -156,10 +157,6 @@ function createDeleteModal(noteToDelete) {
 
     return deleteModal;
 }
-
-
-
-
 
 
 
@@ -222,6 +219,8 @@ function createNote() {
     
 
     notesList.append(note);
+   
+    updateNotesCounter();
     
     noteTextarea.focus(); // Establecer el foco en el textarea de contenido de la nota
 
@@ -231,6 +230,17 @@ function createNote() {
 
 };
 
+
+function updateNotesCounter() {
+    const notes = notesList.querySelectorAll('.note');
+    const notesCounter = document.querySelector('.notes-counter');
+
+    
+    notesCounter.textContent = `${notes.length} ${notes.length === 1 ? "nota" : "notas"}`;
+        
+}
+
+updateNotesCounter();
 
 
 
